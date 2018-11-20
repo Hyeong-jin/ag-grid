@@ -1,20 +1,27 @@
-// Type definitions for ag-grid v3.3.3
+// Type definitions for ag-grid-community v19.0.0
 // Project: http://www.ag-grid.com/
-// Definitions by: Niall Crosby <https://github.com/ceolter/>
-// Definitions: https://github.com/borisyankov/DefinitelyTyped
-import GridOptionsWrapper from '../gridOptionsWrapper';
-import { LoggerFactory } from '../logger';
-import ColumnUtils from '../columnController/columnUtils';
-import { AbstractColDef } from "../entities/colDef";
-export default class BalancedColumnTreeBuilder {
+// Definitions by: Niall Crosby <https://github.com/ag-grid/>
+import { ColDef, ColGroupDef } from "../entities/colDef";
+import { OriginalColumnGroupChild } from "../entities/originalColumnGroupChild";
+import { Column } from "../entities/column";
+export declare class BalancedColumnTreeBuilder {
     private gridOptionsWrapper;
-    private logger;
     private columnUtils;
-    init(gridOptionsWrapper: GridOptionsWrapper, loggerFactory: LoggerFactory, columnUtils: ColumnUtils): void;
-    createBalancedColumnGroups(abstractColDefs: AbstractColDef[]): any;
-    private balanceColumnTree(unbalancedTree, currentDept, columnDept, columnKeyCreator);
-    private findMaxDept(treeChildren, dept);
-    private recursivelyCreateColumns(abstractColDefs, level, columnKeyCreator);
-    private checkForDeprecatedItems(colDef);
-    private isColumnGroup(abstractColDef);
+    private context;
+    private logger;
+    private setBeans;
+    createForAutoGroups(autoGroupCols: Column[], gridBalancedTree: OriginalColumnGroupChild[]): OriginalColumnGroupChild[];
+    private createAutoGroupTreeItem;
+    private findDept;
+    createBalancedColumnGroups(abstractColDefs: (ColDef | ColGroupDef)[], primaryColumns: boolean): any;
+    private balanceColumnTree;
+    private findMaxDept;
+    private recursivelyCreateColumns;
+    private createColumnGroup;
+    private createMergedColGroupDef;
+    private createColumn;
+    mergeColDefs(colDef: ColDef): ColDef;
+    private assignColumnTypes;
+    private checkForDeprecatedItems;
+    private isColumnGroup;
 }
